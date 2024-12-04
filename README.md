@@ -83,11 +83,11 @@
    read onnx using onnxruntime sucess
    ```
 
-从onnx到ncnn
+2. 从onnx到ncnn
 
-经过以上pth到onnx的转换，距离成功将pth模型转换到ncnn平台仅剩一个拦路虎，那就是模型中的`Focus`模块，当然解决该问题并不困难，因为YOLOV5中也有该模块，只要参考YOLOv5部署到ncnn平台对该模块的处理过程，便可成功将YOLOP转换到ncnn平台。具体的转换过程如下：
+   经过以上pth到onnx的转换，距离成功将pth模型转换到ncnn平台仅剩一个拦路虎，那就是模型中的`Focus`模块，当然解决该问题并不困难，因为YOLOV5中也有该模块，只要参考YOLOv5部署到ncnn平台对该模块的处理过程，便可成功将YOLOP转换到ncnn平台。具体的转换过程如下：
 
-（1）使用`onnx2ncnn`将onnx模型转换到ncnn平台，转换脚本如下：
+   （1）使用`onnx2ncnn`将onnx模型转换到ncnn平台，转换脚本如下：
 
 ```
 onnx2ncnn.exe yolop-640-640.onnx yolop-640-640.param yolop-640-640.bin # (Windows平台）
