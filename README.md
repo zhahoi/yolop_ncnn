@@ -94,7 +94,7 @@ onnx2ncnn.exe yolop-640-640.onnx yolop-640-640.param yolop-640-640.bin # (Window
 ./onnx2ncnn yolop-640-640.onnx yolop-640-640.param yolop-640-640.bin # (Linux平台)
 ```
 
-![](https://pic.imgdb.cn/item/674ff8c7d0e0a243d4dd1112.jpg)
+[![微信截图 20241204094407](https://s1.imagehub.cc/images/2024/12/04/cb0453b5bf2ad3a68fea994b3b4ccb1f.jpeg)](https://www.imagehub.cc/image/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE-20241204094407.CcQ56d)
 
 从图中可以看出，出现一些算子不支持的提示，因此需要进一步处理。
 
@@ -154,19 +154,19 @@ ncnnoptimize.exe yolop-640-640.param yolop-640-640.bin yolop-640-640-opt.param y
 
 -推理结果（目标检测）
 
-![](https://pic.imgdb.cn/item/674ff7d8d0e0a243d4dd10d7.jpg)
+[![test lite yolop det ncnn](https://s1.imagehub.cc/images/2024/12/04/d914b9983967090ff00c56070ae59bc2.jpg)](https://www.imagehub.cc/image/test-lite-yolop-det-ncnn.CcaCQe)
 
 --推理结果（可行驶区域掩码）
 
-![](https://pic.imgdb.cn/item/674ff84fd0e0a243d4dd10f5.jpg)
+[![test lite yolop da ncnn](https://s1.imagehub.cc/images/2024/12/04/2ab67883aa507af37ba49c0ae4223065.jpg)](https://www.imagehub.cc/image/test-lite-yolop-da-ncnn.Cca1f7)
 
 -推理结果（车道线掩码）
 
-![](https://pic.imgdb.cn/item/674ff850d0e0a243d4dd10f7.jpg)
+[![test lite yolop ll ncnn](https://s1.imagehub.cc/images/2024/12/04/3f6d5e98295e870fa730931201ac0118.jpg)](https://www.imagehub.cc/image/test-lite-yolop-ll-ncnn.CcabtJ)
 
 -推理结果（整体结果融合）
 
-![](https://pic.imgdb.cn/item/674ff850d0e0a243d4dd10f8.jpg)
+[![test lite yolop merge ncnn](https://s1.imagehub.cc/images/2024/12/04/aec005629ed485f954230b98a73045d1.jpg)](https://www.imagehub.cc/image/test-lite-yolop-merge-ncnn.CcaI5Z)
 
 
 
