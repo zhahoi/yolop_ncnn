@@ -1,0 +1,202 @@
+7767517
+200 230
+Input                    images                   0 1 images
+YoloV5Focus              focus                    1 1 images /model.0/Concat_output_0
+Convolution              /model.0/conv/conv/Conv  1 1 /model.0/Concat_output_0 /model.0/conv/act/Div_output_0 0=32 1=3 4=1 5=1 6=3456 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.1/conv/Conv       1 1 /model.0/conv/act/Div_output_0 /model.1/act/Div_output_0 0=64 1=3 3=2 4=1 5=1 6=18432 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_0              1 2 /model.1/act/Div_output_0 /model.1/act/Div_output_0_splitncnn_0 /model.1/act/Div_output_0_splitncnn_1
+Convolution              /model.2/cv1/conv/Conv   1 1 /model.1/act/Div_output_0_splitncnn_1 /model.2/cv1/act/Div_output_0 0=32 1=1 5=1 6=2048 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_1              1 2 /model.2/cv1/act/Div_output_0 /model.2/cv1/act/Div_output_0_splitncnn_0 /model.2/cv1/act/Div_output_0_splitncnn_1
+Convolution              /model.2/m/m.0/cv1/conv/Conv 1 1 /model.2/cv1/act/Div_output_0_splitncnn_1 /model.2/m/m.0/cv1/act/Div_output_0 0=32 1=1 5=1 6=1024 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.2/m/m.0/cv2/conv/Conv 1 1 /model.2/m/m.0/cv1/act/Div_output_0 /model.2/m/m.0/cv2/act/Div_output_0 0=32 1=3 4=1 5=1 6=9216 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.2/m/m.0/Add       2 1 /model.2/cv1/act/Div_output_0_splitncnn_0 /model.2/m/m.0/cv2/act/Div_output_0 /model.2/m/m.0/Add_output_0
+Convolution              /model.2/cv3/Conv        1 1 /model.2/m/m.0/Add_output_0 /model.2/cv3/Conv_output_0 0=32 1=1 6=1024
+Convolution              /model.2/cv2/Conv        1 1 /model.1/act/Div_output_0_splitncnn_0 /model.2/cv2/Conv_output_0 0=32 1=1 6=2048
+Concat                   /model.2/Concat          2 1 /model.2/cv3/Conv_output_0 /model.2/cv2/Conv_output_0 /model.2/Concat_output_0
+BatchNorm                /model.2/bn/BatchNormalization 1 1 /model.2/Concat_output_0 /model.2/bn/BatchNormalization_output_0 0=64
+ReLU                     /model.2/act/LeakyRelu   1 1 /model.2/bn/BatchNormalization_output_0 /model.2/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.2/cv4/conv/Conv   1 1 /model.2/act/LeakyRelu_output_0 /model.2/cv4/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.3/conv/Conv       1 1 /model.2/cv4/act/Div_output_0 /model.3/act/Div_output_0 0=128 1=3 3=2 4=1 5=1 6=73728 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_2              1 2 /model.3/act/Div_output_0 /model.3/act/Div_output_0_splitncnn_0 /model.3/act/Div_output_0_splitncnn_1
+Convolution              /model.4/cv1/conv/Conv   1 1 /model.3/act/Div_output_0_splitncnn_1 /model.4/cv1/act/Div_output_0 0=64 1=1 5=1 6=8192 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_3              1 2 /model.4/cv1/act/Div_output_0 /model.4/cv1/act/Div_output_0_splitncnn_0 /model.4/cv1/act/Div_output_0_splitncnn_1
+Convolution              /model.4/m/m.0/cv1/conv/Conv 1 1 /model.4/cv1/act/Div_output_0_splitncnn_1 /model.4/m/m.0/cv1/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.4/m/m.0/cv2/conv/Conv 1 1 /model.4/m/m.0/cv1/act/Div_output_0 /model.4/m/m.0/cv2/act/Div_output_0 0=64 1=3 4=1 5=1 6=36864 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.4/m/m.0/Add       2 1 /model.4/cv1/act/Div_output_0_splitncnn_0 /model.4/m/m.0/cv2/act/Div_output_0 /model.4/m/m.0/Add_output_0
+Split                    splitncnn_4              1 2 /model.4/m/m.0/Add_output_0 /model.4/m/m.0/Add_output_0_splitncnn_0 /model.4/m/m.0/Add_output_0_splitncnn_1
+Convolution              /model.4/m/m.1/cv1/conv/Conv 1 1 /model.4/m/m.0/Add_output_0_splitncnn_1 /model.4/m/m.1/cv1/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.4/m/m.1/cv2/conv/Conv 1 1 /model.4/m/m.1/cv1/act/Div_output_0 /model.4/m/m.1/cv2/act/Div_output_0 0=64 1=3 4=1 5=1 6=36864 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.4/m/m.1/Add       2 1 /model.4/m/m.0/Add_output_0_splitncnn_0 /model.4/m/m.1/cv2/act/Div_output_0 /model.4/m/m.1/Add_output_0
+Split                    splitncnn_5              1 2 /model.4/m/m.1/Add_output_0 /model.4/m/m.1/Add_output_0_splitncnn_0 /model.4/m/m.1/Add_output_0_splitncnn_1
+Convolution              /model.4/m/m.2/cv1/conv/Conv 1 1 /model.4/m/m.1/Add_output_0_splitncnn_1 /model.4/m/m.2/cv1/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.4/m/m.2/cv2/conv/Conv 1 1 /model.4/m/m.2/cv1/act/Div_output_0 /model.4/m/m.2/cv2/act/Div_output_0 0=64 1=3 4=1 5=1 6=36864 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.4/m/m.2/Add       2 1 /model.4/m/m.1/Add_output_0_splitncnn_0 /model.4/m/m.2/cv2/act/Div_output_0 /model.4/m/m.2/Add_output_0
+Convolution              /model.4/cv3/Conv        1 1 /model.4/m/m.2/Add_output_0 /model.4/cv3/Conv_output_0 0=64 1=1 6=4096
+Convolution              /model.4/cv2/Conv        1 1 /model.3/act/Div_output_0_splitncnn_0 /model.4/cv2/Conv_output_0 0=64 1=1 6=8192
+Concat                   /model.4/Concat          2 1 /model.4/cv3/Conv_output_0 /model.4/cv2/Conv_output_0 /model.4/Concat_output_0
+BatchNorm                /model.4/bn/BatchNormalization 1 1 /model.4/Concat_output_0 /model.4/bn/BatchNormalization_output_0 0=128
+ReLU                     /model.4/act/LeakyRelu   1 1 /model.4/bn/BatchNormalization_output_0 /model.4/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.4/cv4/conv/Conv   1 1 /model.4/act/LeakyRelu_output_0 /model.4/cv4/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_6              1 2 /model.4/cv4/act/Div_output_0 /model.4/cv4/act/Div_output_0_splitncnn_0 /model.4/cv4/act/Div_output_0_splitncnn_1
+Convolution              /model.5/conv/Conv       1 1 /model.4/cv4/act/Div_output_0_splitncnn_1 /model.5/act/Div_output_0 0=256 1=3 3=2 4=1 5=1 6=294912 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_7              1 2 /model.5/act/Div_output_0 /model.5/act/Div_output_0_splitncnn_0 /model.5/act/Div_output_0_splitncnn_1
+Convolution              /model.6/cv1/conv/Conv   1 1 /model.5/act/Div_output_0_splitncnn_1 /model.6/cv1/act/Div_output_0 0=128 1=1 5=1 6=32768 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_8              1 2 /model.6/cv1/act/Div_output_0 /model.6/cv1/act/Div_output_0_splitncnn_0 /model.6/cv1/act/Div_output_0_splitncnn_1
+Convolution              /model.6/m/m.0/cv1/conv/Conv 1 1 /model.6/cv1/act/Div_output_0_splitncnn_1 /model.6/m/m.0/cv1/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.6/m/m.0/cv2/conv/Conv 1 1 /model.6/m/m.0/cv1/act/Div_output_0 /model.6/m/m.0/cv2/act/Div_output_0 0=128 1=3 4=1 5=1 6=147456 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.6/m/m.0/Add       2 1 /model.6/cv1/act/Div_output_0_splitncnn_0 /model.6/m/m.0/cv2/act/Div_output_0 /model.6/m/m.0/Add_output_0
+Split                    splitncnn_9              1 2 /model.6/m/m.0/Add_output_0 /model.6/m/m.0/Add_output_0_splitncnn_0 /model.6/m/m.0/Add_output_0_splitncnn_1
+Convolution              /model.6/m/m.1/cv1/conv/Conv 1 1 /model.6/m/m.0/Add_output_0_splitncnn_1 /model.6/m/m.1/cv1/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.6/m/m.1/cv2/conv/Conv 1 1 /model.6/m/m.1/cv1/act/Div_output_0 /model.6/m/m.1/cv2/act/Div_output_0 0=128 1=3 4=1 5=1 6=147456 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.6/m/m.1/Add       2 1 /model.6/m/m.0/Add_output_0_splitncnn_0 /model.6/m/m.1/cv2/act/Div_output_0 /model.6/m/m.1/Add_output_0
+Split                    splitncnn_10             1 2 /model.6/m/m.1/Add_output_0 /model.6/m/m.1/Add_output_0_splitncnn_0 /model.6/m/m.1/Add_output_0_splitncnn_1
+Convolution              /model.6/m/m.2/cv1/conv/Conv 1 1 /model.6/m/m.1/Add_output_0_splitncnn_1 /model.6/m/m.2/cv1/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.6/m/m.2/cv2/conv/Conv 1 1 /model.6/m/m.2/cv1/act/Div_output_0 /model.6/m/m.2/cv2/act/Div_output_0 0=128 1=3 4=1 5=1 6=147456 9=6 -23310=2,1.666667e-01,5.000000e-01
+BinaryOp                 /model.6/m/m.2/Add       2 1 /model.6/m/m.1/Add_output_0_splitncnn_0 /model.6/m/m.2/cv2/act/Div_output_0 /model.6/m/m.2/Add_output_0
+Convolution              /model.6/cv3/Conv        1 1 /model.6/m/m.2/Add_output_0 /model.6/cv3/Conv_output_0 0=128 1=1 6=16384
+Convolution              /model.6/cv2/Conv        1 1 /model.5/act/Div_output_0_splitncnn_0 /model.6/cv2/Conv_output_0 0=128 1=1 6=32768
+Concat                   /model.6/Concat          2 1 /model.6/cv3/Conv_output_0 /model.6/cv2/Conv_output_0 /model.6/Concat_output_0
+BatchNorm                /model.6/bn/BatchNormalization 1 1 /model.6/Concat_output_0 /model.6/bn/BatchNormalization_output_0 0=256
+ReLU                     /model.6/act/LeakyRelu   1 1 /model.6/bn/BatchNormalization_output_0 /model.6/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.6/cv4/conv/Conv   1 1 /model.6/act/LeakyRelu_output_0 /model.6/cv4/act/Div_output_0 0=256 1=1 5=1 6=65536 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_11             1 2 /model.6/cv4/act/Div_output_0 /model.6/cv4/act/Div_output_0_splitncnn_0 /model.6/cv4/act/Div_output_0_splitncnn_1
+Convolution              /model.7/conv/Conv       1 1 /model.6/cv4/act/Div_output_0_splitncnn_1 /model.7/act/Div_output_0 0=512 1=3 3=2 4=1 5=1 6=1179648 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.8/cv1/conv/Conv   1 1 /model.7/act/Div_output_0 /model.8/cv1/act/Div_output_0 0=256 1=1 5=1 6=131072 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_12             1 4 /model.8/cv1/act/Div_output_0 /model.8/cv1/act/Div_output_0_splitncnn_0 /model.8/cv1/act/Div_output_0_splitncnn_1 /model.8/cv1/act/Div_output_0_splitncnn_2 /model.8/cv1/act/Div_output_0_splitncnn_3
+Pooling                  /model.8/m.0/MaxPool     1 1 /model.8/cv1/act/Div_output_0_splitncnn_3 /model.8/m.0/MaxPool_output_0 1=5 3=2 5=1
+Pooling                  /model.8/m.1/MaxPool     1 1 /model.8/cv1/act/Div_output_0_splitncnn_2 /model.8/m.1/MaxPool_output_0 1=9 3=4 5=1
+Pooling                  /model.8/m.2/MaxPool     1 1 /model.8/cv1/act/Div_output_0_splitncnn_1 /model.8/m.2/MaxPool_output_0 1=13 3=6 5=1
+Concat                   /model.8/Concat          4 1 /model.8/cv1/act/Div_output_0_splitncnn_0 /model.8/m.0/MaxPool_output_0 /model.8/m.1/MaxPool_output_0 /model.8/m.2/MaxPool_output_0 /model.8/Concat_output_0
+Convolution              /model.8/cv2/conv/Conv   1 1 /model.8/Concat_output_0 /model.8/cv2/act/Div_output_0 0=512 1=1 5=1 6=524288 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_13             1 2 /model.8/cv2/act/Div_output_0 /model.8/cv2/act/Div_output_0_splitncnn_0 /model.8/cv2/act/Div_output_0_splitncnn_1
+Convolution              /model.9/cv1/conv/Conv   1 1 /model.8/cv2/act/Div_output_0_splitncnn_1 /model.9/cv1/act/Div_output_0 0=256 1=1 5=1 6=131072 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.9/m/m.0/cv1/conv/Conv 1 1 /model.9/cv1/act/Div_output_0 /model.9/m/m.0/cv1/act/Div_output_0 0=256 1=1 5=1 6=65536 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.9/m/m.0/cv2/conv/Conv 1 1 /model.9/m/m.0/cv1/act/Div_output_0 /model.9/m/m.0/cv2/act/Div_output_0 0=256 1=3 4=1 5=1 6=589824 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.9/cv3/Conv        1 1 /model.9/m/m.0/cv2/act/Div_output_0 /model.9/cv3/Conv_output_0 0=256 1=1 6=65536
+Convolution              /model.9/cv2/Conv        1 1 /model.8/cv2/act/Div_output_0_splitncnn_0 /model.9/cv2/Conv_output_0 0=256 1=1 6=131072
+Concat                   /model.9/Concat          2 1 /model.9/cv3/Conv_output_0 /model.9/cv2/Conv_output_0 /model.9/Concat_output_0
+BatchNorm                /model.9/bn/BatchNormalization 1 1 /model.9/Concat_output_0 /model.9/bn/BatchNormalization_output_0 0=512
+ReLU                     /model.9/act/LeakyRelu   1 1 /model.9/bn/BatchNormalization_output_0 /model.9/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.9/cv4/conv/Conv   1 1 /model.9/act/LeakyRelu_output_0 /model.9/cv4/act/Div_output_0 0=512 1=1 5=1 6=262144 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.10/conv/Conv      1 1 /model.9/cv4/act/Div_output_0 /model.10/act/Div_output_0 0=256 1=1 5=1 6=131072 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_14             1 2 /model.10/act/Div_output_0 /model.10/act/Div_output_0_splitncnn_0 /model.10/act/Div_output_0_splitncnn_1
+Interp                   /model.11/Resize         1 1 /model.10/act/Div_output_0_splitncnn_1 /model.11/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Concat                   /model.12/Concat         2 1 /model.11/Resize_output_0 /model.6/cv4/act/Div_output_0_splitncnn_0 /model.12/Concat_output_0
+Split                    splitncnn_15             1 2 /model.12/Concat_output_0 /model.12/Concat_output_0_splitncnn_0 /model.12/Concat_output_0_splitncnn_1
+Convolution              /model.13/cv1/conv/Conv  1 1 /model.12/Concat_output_0_splitncnn_1 /model.13/cv1/act/Div_output_0 0=128 1=1 5=1 6=65536 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.13/m/m.0/cv1/conv/Conv 1 1 /model.13/cv1/act/Div_output_0 /model.13/m/m.0/cv1/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.13/m/m.0/cv2/conv/Conv 1 1 /model.13/m/m.0/cv1/act/Div_output_0 /model.13/m/m.0/cv2/act/Div_output_0 0=128 1=3 4=1 5=1 6=147456 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.13/cv3/Conv       1 1 /model.13/m/m.0/cv2/act/Div_output_0 /model.13/cv3/Conv_output_0 0=128 1=1 6=16384
+Convolution              /model.13/cv2/Conv       1 1 /model.12/Concat_output_0_splitncnn_0 /model.13/cv2/Conv_output_0 0=128 1=1 6=65536
+Concat                   /model.13/Concat         2 1 /model.13/cv3/Conv_output_0 /model.13/cv2/Conv_output_0 /model.13/Concat_output_0
+BatchNorm                /model.13/bn/BatchNormalization 1 1 /model.13/Concat_output_0 /model.13/bn/BatchNormalization_output_0 0=256
+ReLU                     /model.13/act/LeakyRelu  1 1 /model.13/bn/BatchNormalization_output_0 /model.13/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.13/cv4/conv/Conv  1 1 /model.13/act/LeakyRelu_output_0 /model.13/cv4/act/Div_output_0 0=256 1=1 5=1 6=65536 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.14/conv/Conv      1 1 /model.13/cv4/act/Div_output_0 /model.14/act/Div_output_0 0=128 1=1 5=1 6=32768 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_16             1 2 /model.14/act/Div_output_0 /model.14/act/Div_output_0_splitncnn_0 /model.14/act/Div_output_0_splitncnn_1
+Interp                   /model.15/Resize         1 1 /model.14/act/Div_output_0_splitncnn_1 /model.15/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Concat                   /model.16/Concat         2 1 /model.15/Resize_output_0 /model.4/cv4/act/Div_output_0_splitncnn_0 /model.16/Concat_output_0
+Split                    splitncnn_17             1 4 /model.16/Concat_output_0 /model.16/Concat_output_0_splitncnn_0 /model.16/Concat_output_0_splitncnn_1 /model.16/Concat_output_0_splitncnn_2 /model.16/Concat_output_0_splitncnn_3
+Convolution              /model.17/cv1/conv/Conv  1 1 /model.16/Concat_output_0_splitncnn_3 /model.17/cv1/act/Div_output_0 0=64 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.17/m/m.0/cv1/conv/Conv 1 1 /model.17/cv1/act/Div_output_0 /model.17/m/m.0/cv1/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.17/m/m.0/cv2/conv/Conv 1 1 /model.17/m/m.0/cv1/act/Div_output_0 /model.17/m/m.0/cv2/act/Div_output_0 0=64 1=3 4=1 5=1 6=36864 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.17/cv3/Conv       1 1 /model.17/m/m.0/cv2/act/Div_output_0 /model.17/cv3/Conv_output_0 0=64 1=1 6=4096
+Convolution              /model.17/cv2/Conv       1 1 /model.16/Concat_output_0_splitncnn_2 /model.17/cv2/Conv_output_0 0=64 1=1 6=16384
+Concat                   /model.17/Concat         2 1 /model.17/cv3/Conv_output_0 /model.17/cv2/Conv_output_0 /model.17/Concat_output_0
+BatchNorm                /model.17/bn/BatchNormalization 1 1 /model.17/Concat_output_0 /model.17/bn/BatchNormalization_output_0 0=128
+ReLU                     /model.17/act/LeakyRelu  1 1 /model.17/bn/BatchNormalization_output_0 /model.17/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.17/cv4/conv/Conv  1 1 /model.17/act/LeakyRelu_output_0 /model.17/cv4/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_18             1 2 /model.17/cv4/act/Div_output_0 /model.17/cv4/act/Div_output_0_splitncnn_0 /model.17/cv4/act/Div_output_0_splitncnn_1
+Convolution              /model.18/conv/Conv      1 1 /model.17/cv4/act/Div_output_0_splitncnn_1 /model.18/act/Div_output_0 0=128 1=3 3=2 4=1 5=1 6=147456 9=6 -23310=2,1.666667e-01,5.000000e-01
+Concat                   /model.19/Concat         2 1 /model.18/act/Div_output_0 /model.14/act/Div_output_0_splitncnn_0 /model.19/Concat_output_0
+Split                    splitncnn_19             1 2 /model.19/Concat_output_0 /model.19/Concat_output_0_splitncnn_0 /model.19/Concat_output_0_splitncnn_1
+Convolution              /model.20/cv1/conv/Conv  1 1 /model.19/Concat_output_0_splitncnn_1 /model.20/cv1/act/Div_output_0 0=128 1=1 5=1 6=32768 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.20/m/m.0/cv1/conv/Conv 1 1 /model.20/cv1/act/Div_output_0 /model.20/m/m.0/cv1/act/Div_output_0 0=128 1=1 5=1 6=16384 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.20/m/m.0/cv2/conv/Conv 1 1 /model.20/m/m.0/cv1/act/Div_output_0 /model.20/m/m.0/cv2/act/Div_output_0 0=128 1=3 4=1 5=1 6=147456 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.20/cv3/Conv       1 1 /model.20/m/m.0/cv2/act/Div_output_0 /model.20/cv3/Conv_output_0 0=128 1=1 6=16384
+Convolution              /model.20/cv2/Conv       1 1 /model.19/Concat_output_0_splitncnn_0 /model.20/cv2/Conv_output_0 0=128 1=1 6=32768
+Concat                   /model.20/Concat         2 1 /model.20/cv3/Conv_output_0 /model.20/cv2/Conv_output_0 /model.20/Concat_output_0
+BatchNorm                /model.20/bn/BatchNormalization 1 1 /model.20/Concat_output_0 /model.20/bn/BatchNormalization_output_0 0=256
+ReLU                     /model.20/act/LeakyRelu  1 1 /model.20/bn/BatchNormalization_output_0 /model.20/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.20/cv4/conv/Conv  1 1 /model.20/act/LeakyRelu_output_0 /model.20/cv4/act/Div_output_0 0=256 1=1 5=1 6=65536 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_20             1 2 /model.20/cv4/act/Div_output_0 /model.20/cv4/act/Div_output_0_splitncnn_0 /model.20/cv4/act/Div_output_0_splitncnn_1
+Convolution              /model.21/conv/Conv      1 1 /model.20/cv4/act/Div_output_0_splitncnn_1 /model.21/act/Div_output_0 0=256 1=3 3=2 4=1 5=1 6=589824 9=6 -23310=2,1.666667e-01,5.000000e-01
+Concat                   /model.22/Concat         2 1 /model.21/act/Div_output_0 /model.10/act/Div_output_0_splitncnn_0 /model.22/Concat_output_0
+Split                    splitncnn_21             1 2 /model.22/Concat_output_0 /model.22/Concat_output_0_splitncnn_0 /model.22/Concat_output_0_splitncnn_1
+Convolution              /model.23/cv1/conv/Conv  1 1 /model.22/Concat_output_0_splitncnn_1 /model.23/cv1/act/Div_output_0 0=256 1=1 5=1 6=131072 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.23/m/m.0/cv1/conv/Conv 1 1 /model.23/cv1/act/Div_output_0 /model.23/m/m.0/cv1/act/Div_output_0 0=256 1=1 5=1 6=65536 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.23/m/m.0/cv2/conv/Conv 1 1 /model.23/m/m.0/cv1/act/Div_output_0 /model.23/m/m.0/cv2/act/Div_output_0 0=256 1=3 4=1 5=1 6=589824 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.23/cv3/Conv       1 1 /model.23/m/m.0/cv2/act/Div_output_0 /model.23/cv3/Conv_output_0 0=256 1=1 6=65536
+Convolution              /model.23/cv2/Conv       1 1 /model.22/Concat_output_0_splitncnn_0 /model.23/cv2/Conv_output_0 0=256 1=1 6=131072
+Concat                   /model.23/Concat         2 1 /model.23/cv3/Conv_output_0 /model.23/cv2/Conv_output_0 /model.23/Concat_output_0
+BatchNorm                /model.23/bn/BatchNormalization 1 1 /model.23/Concat_output_0 /model.23/bn/BatchNormalization_output_0 0=512
+ReLU                     /model.23/act/LeakyRelu  1 1 /model.23/bn/BatchNormalization_output_0 /model.23/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.23/cv4/conv/Conv  1 1 /model.23/act/LeakyRelu_output_0 /model.23/cv4/act/Div_output_0 0=512 1=1 5=1 6=262144 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.24/m.0/Conv       1 1 /model.17/cv4/act/Div_output_0_splitncnn_0 /model.24/m.0/Conv_output_0 0=18 1=1 5=1 6=2304
+Reshape                  /model.24/Reshape        1 1 /model.24/m.0/Conv_output_0 /model.24/Reshape_output_0 0=6400 1=6 2=3
+Permute                  /model.24/Transpose      1 1 /model.24/Reshape_output_0 /model.24/Transpose_output_0 0=1
+Reshape                  /model.24/Reshape_1      1 1 /model.24/Transpose_output_0 det_stride_8 0=6 1=-1
+Convolution              /model.24/m.1/Conv       1 1 /model.20/cv4/act/Div_output_0_splitncnn_0 /model.24/m.1/Conv_output_0 0=18 1=1 5=1 6=4608
+Reshape                  /model.24/Reshape_2      1 1 /model.24/m.1/Conv_output_0 /model.24/Reshape_2_output_0 0=1600 1=6 2=3
+Permute                  /model.24/Transpose_1    1 1 /model.24/Reshape_2_output_0 /model.24/Transpose_1_output_0 0=1
+Reshape                  /model.24/Reshape_3      1 1 /model.24/Transpose_1_output_0 det_stride_16 0=6 1=-1
+Convolution              /model.24/m.2/Conv       1 1 /model.23/cv4/act/Div_output_0 /model.24/m.2/Conv_output_0 0=18 1=1 5=1 6=9216
+Reshape                  /model.24/Reshape_4      1 1 /model.24/m.2/Conv_output_0 /model.24/Reshape_4_output_0 0=400 1=6 2=3
+Permute                  /model.24/Transpose_2    1 1 /model.24/Reshape_4_output_0 /model.24/Transpose_2_output_0 0=1
+Reshape                  /model.24/Reshape_5      1 1 /model.24/Transpose_2_output_0 det_stride_32 0=6 1=-1
+Convolution              /model.25/conv/Conv      1 1 /model.16/Concat_output_0_splitncnn_1 /model.25/act/Div_output_0 0=128 1=3 4=1 5=1 6=294912 9=6 -23310=2,1.666667e-01,5.000000e-01
+Interp                   /model.26/Resize         1 1 /model.25/act/Div_output_0 /model.26/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Split                    splitncnn_22             1 2 /model.26/Resize_output_0 /model.26/Resize_output_0_splitncnn_0 /model.26/Resize_output_0_splitncnn_1
+Convolution              /model.27/cv1/conv/Conv  1 1 /model.26/Resize_output_0_splitncnn_1 /model.27/cv1/act/Div_output_0 0=32 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.27/m/m.0/cv1/conv/Conv 1 1 /model.27/cv1/act/Div_output_0 /model.27/m/m.0/cv1/act/Div_output_0 0=32 1=1 5=1 6=1024 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.27/m/m.0/cv2/conv/Conv 1 1 /model.27/m/m.0/cv1/act/Div_output_0 /model.27/m/m.0/cv2/act/Div_output_0 0=32 1=3 4=1 5=1 6=9216 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.27/cv3/Conv       1 1 /model.27/m/m.0/cv2/act/Div_output_0 /model.27/cv3/Conv_output_0 0=32 1=1 6=1024
+Convolution              /model.27/cv2/Conv       1 1 /model.26/Resize_output_0_splitncnn_0 /model.27/cv2/Conv_output_0 0=32 1=1 6=4096
+Concat                   /model.27/Concat         2 1 /model.27/cv3/Conv_output_0 /model.27/cv2/Conv_output_0 /model.27/Concat_output_0
+BatchNorm                /model.27/bn/BatchNormalization 1 1 /model.27/Concat_output_0 /model.27/bn/BatchNormalization_output_0 0=64
+ReLU                     /model.27/act/LeakyRelu  1 1 /model.27/bn/BatchNormalization_output_0 /model.27/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.27/cv4/conv/Conv  1 1 /model.27/act/LeakyRelu_output_0 /model.27/cv4/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.28/conv/Conv      1 1 /model.27/cv4/act/Div_output_0 /model.28/act/Div_output_0 0=32 1=3 4=1 5=1 6=18432 9=6 -23310=2,1.666667e-01,5.000000e-01
+Interp                   /model.29/Resize         1 1 /model.28/act/Div_output_0 /model.29/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              /model.30/conv/Conv      1 1 /model.29/Resize_output_0 /model.30/act/Div_output_0 0=16 1=3 4=1 5=1 6=4608 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_23             1 2 /model.30/act/Div_output_0 /model.30/act/Div_output_0_splitncnn_0 /model.30/act/Div_output_0_splitncnn_1
+Convolution              /model.31/cv1/conv/Conv  1 1 /model.30/act/Div_output_0_splitncnn_1 /model.31/cv1/act/Div_output_0 0=4 1=1 5=1 6=64 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.31/m/m.0/cv1/conv/Conv 1 1 /model.31/cv1/act/Div_output_0 /model.31/m/m.0/cv1/act/Div_output_0 0=4 1=1 5=1 6=16 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.31/m/m.0/cv2/conv/Conv 1 1 /model.31/m/m.0/cv1/act/Div_output_0 /model.31/m/m.0/cv2/act/Div_output_0 0=4 1=3 4=1 5=1 6=144 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.31/cv3/Conv       1 1 /model.31/m/m.0/cv2/act/Div_output_0 /model.31/cv3/Conv_output_0 0=4 1=1 6=16
+Convolution              /model.31/cv2/Conv       1 1 /model.30/act/Div_output_0_splitncnn_0 /model.31/cv2/Conv_output_0 0=4 1=1 6=64
+Concat                   /model.31/Concat         2 1 /model.31/cv3/Conv_output_0 /model.31/cv2/Conv_output_0 /model.31/Concat_output_0
+BatchNorm                /model.31/bn/BatchNormalization 1 1 /model.31/Concat_output_0 /model.31/bn/BatchNormalization_output_0 0=8
+ReLU                     /model.31/act/LeakyRelu  1 1 /model.31/bn/BatchNormalization_output_0 /model.31/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.31/cv4/conv/Conv  1 1 /model.31/act/LeakyRelu_output_0 /model.31/cv4/act/Div_output_0 0=8 1=1 5=1 6=64 9=6 -23310=2,1.666667e-01,5.000000e-01
+Interp                   /model.32/Resize         1 1 /model.31/cv4/act/Div_output_0 /model.32/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              /model.33/conv/Conv      1 1 /model.32/Resize_output_0 /model.33/act/Div_output_0 0=2 1=3 4=1 5=1 6=144 9=6 -23310=2,1.666667e-01,5.000000e-01
+Sigmoid                  /Sigmoid                 1 1 /model.33/act/Div_output_0 drive_area_seg
+Convolution              /model.34/conv/Conv      1 1 /model.16/Concat_output_0_splitncnn_0 /model.34/act/Div_output_0 0=128 1=3 4=1 5=1 6=294912 9=6 -23310=2,1.666667e-01,5.000000e-01
+Interp                   /model.35/Resize         1 1 /model.34/act/Div_output_0 /model.35/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Split                    splitncnn_24             1 2 /model.35/Resize_output_0 /model.35/Resize_output_0_splitncnn_0 /model.35/Resize_output_0_splitncnn_1
+Convolution              /model.36/cv1/conv/Conv  1 1 /model.35/Resize_output_0_splitncnn_1 /model.36/cv1/act/Div_output_0 0=32 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.36/m/m.0/cv1/conv/Conv 1 1 /model.36/cv1/act/Div_output_0 /model.36/m/m.0/cv1/act/Div_output_0 0=32 1=1 5=1 6=1024 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.36/m/m.0/cv2/conv/Conv 1 1 /model.36/m/m.0/cv1/act/Div_output_0 /model.36/m/m.0/cv2/act/Div_output_0 0=32 1=3 4=1 5=1 6=9216 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.36/cv3/Conv       1 1 /model.36/m/m.0/cv2/act/Div_output_0 /model.36/cv3/Conv_output_0 0=32 1=1 6=1024
+Convolution              /model.36/cv2/Conv       1 1 /model.35/Resize_output_0_splitncnn_0 /model.36/cv2/Conv_output_0 0=32 1=1 6=4096
+Concat                   /model.36/Concat         2 1 /model.36/cv3/Conv_output_0 /model.36/cv2/Conv_output_0 /model.36/Concat_output_0
+BatchNorm                /model.36/bn/BatchNormalization 1 1 /model.36/Concat_output_0 /model.36/bn/BatchNormalization_output_0 0=64
+ReLU                     /model.36/act/LeakyRelu  1 1 /model.36/bn/BatchNormalization_output_0 /model.36/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.36/cv4/conv/Conv  1 1 /model.36/act/LeakyRelu_output_0 /model.36/cv4/act/Div_output_0 0=64 1=1 5=1 6=4096 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.37/conv/Conv      1 1 /model.36/cv4/act/Div_output_0 /model.37/act/Div_output_0 0=32 1=3 4=1 5=1 6=18432 9=6 -23310=2,1.666667e-01,5.000000e-01
+Interp                   /model.38/Resize         1 1 /model.37/act/Div_output_0 /model.38/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              /model.39/conv/Conv      1 1 /model.38/Resize_output_0 /model.39/act/Div_output_0 0=16 1=3 4=1 5=1 6=4608 9=6 -23310=2,1.666667e-01,5.000000e-01
+Split                    splitncnn_25             1 2 /model.39/act/Div_output_0 /model.39/act/Div_output_0_splitncnn_0 /model.39/act/Div_output_0_splitncnn_1
+Convolution              /model.40/cv1/conv/Conv  1 1 /model.39/act/Div_output_0_splitncnn_1 /model.40/cv1/act/Div_output_0 0=4 1=1 5=1 6=64 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.40/m/m.0/cv1/conv/Conv 1 1 /model.40/cv1/act/Div_output_0 /model.40/m/m.0/cv1/act/Div_output_0 0=4 1=1 5=1 6=16 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.40/m/m.0/cv2/conv/Conv 1 1 /model.40/m/m.0/cv1/act/Div_output_0 /model.40/m/m.0/cv2/act/Div_output_0 0=4 1=3 4=1 5=1 6=144 9=6 -23310=2,1.666667e-01,5.000000e-01
+Convolution              /model.40/cv3/Conv       1 1 /model.40/m/m.0/cv2/act/Div_output_0 /model.40/cv3/Conv_output_0 0=4 1=1 6=16
+Convolution              /model.40/cv2/Conv       1 1 /model.39/act/Div_output_0_splitncnn_0 /model.40/cv2/Conv_output_0 0=4 1=1 6=64
+Concat                   /model.40/Concat         2 1 /model.40/cv3/Conv_output_0 /model.40/cv2/Conv_output_0 /model.40/Concat_output_0
+BatchNorm                /model.40/bn/BatchNormalization 1 1 /model.40/Concat_output_0 /model.40/bn/BatchNormalization_output_0 0=8
+ReLU                     /model.40/act/LeakyRelu  1 1 /model.40/bn/BatchNormalization_output_0 /model.40/act/LeakyRelu_output_0 0=1.000000e-01
+Convolution              /model.40/cv4/conv/Conv  1 1 /model.40/act/LeakyRelu_output_0 /model.40/cv4/act/Div_output_0 0=8 1=1 5=1 6=64 9=6 -23310=2,1.666667e-01,5.000000e-01
+Interp                   /model.41/Resize         1 1 /model.40/cv4/act/Div_output_0 /model.41/Resize_output_0 0=1 1=2.000000e+00 2=2.000000e+00
+Convolution              /model.42/conv/Conv      1 1 /model.41/Resize_output_0 /model.42/act/Div_output_0 0=2 1=3 4=1 5=1 6=144 9=6 -23310=2,1.666667e-01,5.000000e-01
+Sigmoid                  /Sigmoid_1               1 1 /model.42/act/Div_output_0 lane_line_seg
