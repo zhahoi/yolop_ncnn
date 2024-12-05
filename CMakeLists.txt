@@ -4,7 +4,6 @@ project(yolop)
 set(project_name yolop)
 set(project_root ${PROJECT_SOURCE_DIR})
 set(project_src ${project_root}/src)
-set(project_include ${project_root}/include)
 set(EXECUTABLE_OUTPUT_PATH ${project_root}/bin)
 
 option(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
@@ -36,7 +35,7 @@ set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
 
 include_directories(
-    ${project_include}
+    ${project_src}
     ${OpenCV_INCLUDE_DIRS}
     ${CMAKE_CURRENT_BINARY_DIR}
 )
